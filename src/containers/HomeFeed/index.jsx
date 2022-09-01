@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import { Box, Stack, Typography } from 'components/basic'
 import VideoCard from 'components/advanced/VideoCard'
@@ -12,13 +12,15 @@ const HomeFeed = () => {
     state: { videosCategory },
   } = useGlobalState()
 
+  const loadHomeFeedVideos = useRef(() => {})
+
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
-    loadHomeFeedVideos()
+    loadHomeFeedVideos.current()
   }, [videosCategory])
 
-  const loadHomeFeedVideos = async () => {
+  loadHomeFeedVideos.current = async () => {
     try {
       const data = await getVideosByCategory(videosCategory)
       setVideos(data.items)

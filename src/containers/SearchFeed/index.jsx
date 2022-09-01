@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { Box, Stack } from 'components/basic'
@@ -11,13 +11,15 @@ const SearchFeed = () => {
   const params = useParams()
   const [searchResults, setSearchResults] = useState()
 
+  const loadSearchResults = useRef(() => {})
+
   const { searchTerm } = params
 
   useEffect(() => {
-    loadSearchResults()
+    loadSearchResults.current()
   }, [searchTerm])
 
-  const loadSearchResults = async () => {
+  loadSearchResults.current = async () => {
     try {
       const data = await getVideosByCategory(searchTerm)
       setSearchResults(data.items)

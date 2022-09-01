@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import ReactPlayer from 'react-player/youtube'
 
@@ -17,17 +17,20 @@ const VideoDetails = () => {
   const params = useParams()
   const navigate = useNavigate()
 
+  const loadVideoDetails = useRef(() => {})
+  const loadRelatedVideos = useRef(() => {})
+
   const [videoDetails, setVideoDetails] = useState()
   const [relatedVideos, setRelatedVideos] = useState()
 
   const { videoId } = params
 
   useEffect(() => {
-    loadVideoDetails()
-    loadRelatedVideos()
+    loadVideoDetails.current()
+    loadRelatedVideos.current()
   }, [videoId])
 
-  const loadVideoDetails = async () => {
+  loadVideoDetails.current = async () => {
     try {
       const data = await getVideoDetails(videoId)
       setVideoDetails(data.items[0])
@@ -36,7 +39,7 @@ const VideoDetails = () => {
     }
   }
 
-  const loadRelatedVideos = async () => {
+  loadRelatedVideos.current = async () => {
     try {
       const data = await getRelatedVideos(videoId)
       setRelatedVideos(data.items)
