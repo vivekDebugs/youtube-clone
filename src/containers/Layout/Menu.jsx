@@ -19,7 +19,7 @@ const Menu = ({ onMenuClose }) => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { state, dispatch } = useGlobalState()
+  const { dispatch } = useGlobalState()
 
   const handleSelectCategory = name => {
     if (location.pathname !== PATH.HOME_FEED) navigate(PATH.HOME_FEED)
