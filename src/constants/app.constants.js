@@ -36,12 +36,3 @@ export const CATEGORIES = [
   { name: 'Gym', icon: <FitnessCenterIcon /> },
   { name: 'Crypto', icon: <DeveloperModeIcon /> },
 ]
-
-export const DEMO_THUBMNAIL_URL = 'https://i.ibb.co/G2L2Gwp/API-Course.png'
-export const DEMO_CHANNEL_URL = '/channel/UCmXmlB4-HJytD7wek0Uo97A'
-export const DEMO_VIDEO_URL = '/video/GDa8kZLNhJ4'
-export const DEMO_CHANNEL_TITLE = 'JavaScript Mastery'
-export const DEMO_VIDEO_TITLE =
-  'Build and Deploy 5 JavaScript & React API Projects in 10 Hours - Full Course | RapidAPI'
-export const DEMO_PROFILE_PICTURE_URL =
-  'http://dergipark.org.tr/assets/app/images/buddy_sample.png'
